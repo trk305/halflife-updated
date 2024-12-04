@@ -226,7 +226,7 @@ public:
 	bool ShouldFadeOnDeath() override { return false; }
 	bool IsPlayer() override { return true; } // Spectators should return false for this, they aren't "players" as far as game logic is concerned
 
-	bool IsNetClient() override { return true; } // Bots should return false for this, they can't receive NET messages
+	bool IsNetClient() override { return (pev->flags & FL_FAKECLIENT) == 0; } // Bots should return false for this, they can't receive NET messages
 												 // Spectators should return true for this
 	const char* TeamID() override;
 
@@ -347,7 +347,11 @@ public:
 	char m_SbarString1[SBAR_STRING_SIZE];
 
 	float m_flNextChatTime;
-
+	/**
+	 *    @brief True if the player is currently connected to the server.
+	 *    Should only be false in multiplayer games, for players that have disconnected.
+	 */
+	bool m_bIsConnected = true;
 	void SetPrefsFromUserinfo(char* infobuffer);
 
 	int m_iAutoWepSwitch;

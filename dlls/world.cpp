@@ -501,6 +501,7 @@ void CWorld::Spawn()
 
 void CWorld::Precache()
 {
+	ALERT(at_console, "Turki Al Mutairi Console Test - MAP LOADED\n");
 	// Flag this entity for removal if it's not the actual world entity.
 	if (World != this)
 	{

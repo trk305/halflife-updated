@@ -420,6 +420,7 @@ int CHud::GetSpriteIndex(const char* SpriteName)
 
 void CHud::VidInit()
 {
+	gEngfuncs.Con_Printf("Turki Al Mutairi Testing and Experimental place - GAME LOADED\n");
 	m_scrinfo.iSize = sizeof(m_scrinfo);
 	GetScreenInfo(&m_scrinfo);
 
